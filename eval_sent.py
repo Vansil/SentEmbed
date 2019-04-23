@@ -20,6 +20,9 @@ model_name = 'baseline'
 checkpoint_path = os.path.join('output','baseline','22221624_test','checkpoints','model_iter_10000.pt')
 output_dir = os.path.join('output','baseline','22221624_test')
 
+device_name = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = torch.device(device_name)
+print("Device: "+device_name)
 
 # import Senteval
 sys.path.insert(0, PATH_TO_SENTEVAL)
@@ -41,7 +44,7 @@ def batcher(params, batch):
     # Encode batch through model
     batch = [' '.join(sent) if sent != [] else '.' for sent in batch]
     batch = dataloader.prepare_sentences(batch)
-    embeddings = torch.Tensor(net.encode(batch))
+    embeddings = torch.Tensor(net.encode(batch)).to(device)
 
     return embeddings
 
@@ -67,9 +70,6 @@ if __name__ == "__main__":
     dataloader = data_utils.DataLoaderSnli([], vocab)
 
     # Load network
-    device_name = 'cuda' if torch.cuda.is_available() else 'cpu'
-    device = torch.device(device_name)
-    print("Device: "+device_name)
     if model_name == 'baseline':
         net = BaselineNet(glove_emb.embedding).to(device)
     # Load checkpoint
