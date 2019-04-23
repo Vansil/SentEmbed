@@ -9,7 +9,7 @@ rm glove.zip
 # SNLI
 echo "Getting SNLI"
 wget -O snli.zip https://nlp.stanford.edu/projects/snli/snli_1.0.zip
-unzip snli.zip -d snli_1.0/
+unzip snli.zip
 rm snli.zip
 
 # Data preparations
