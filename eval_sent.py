@@ -41,7 +41,7 @@ def batcher(params, batch):
     # Encode batch through model
     batch = [' '.join(sent) if sent != [] else '.' for sent in batch]
     batch = dataloader.prepare_sentences(batch)
-    embeddings = net.encode(batch).numpy()
+    embeddings = torch.Tensor(net.encode(batch))
 
     return embeddings
 
