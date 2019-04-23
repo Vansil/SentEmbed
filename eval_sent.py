@@ -17,7 +17,7 @@ PATH_TO_DATA = 'SentEval/data/senteval_data/'
 # TODO: command line input
 embedding_path = os.path.join('data','glove','glove.filtered.300d.txt') #TODO: regenerate based on task and full GloVe
 model_name = 'baseline'
-checkpoint_path = os.path.join('output','baseline','22221624_test','checkpoints','model_iter_10000.pt')
+checkpoint_path = os.path.join('output','baseline','23065025','checkpoints','model_iter_40000.pt')
 output_dir = os.path.join('output','baseline','22221624_test')
 
 device_name = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -50,7 +50,7 @@ def batcher(params, batch):
 
 
 # Set params for SentEval
-params_senteval = {'task_path': PATH_TO_DATA, 'usepytorch': True, 'kfold': 10, 'batch_size': 512}
+params_senteval = {'task_path': PATH_TO_DATA, 'usepytorch': False, 'kfold': 10, 'batch_size': 512}
 params_senteval['classifier'] = {'nhid': 0, 'optim': 'adam', 'batch_size': 64,
                                  'tenacity': 5, 'epoch_size': 4}
 # Set up logger
