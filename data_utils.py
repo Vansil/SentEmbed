@@ -152,6 +152,7 @@ class DataLoaderSnli(object):
         '''
         Same as prepare_batch, but for list of sentences instead of sentence pairs
         '''
+        batch = [DatasetSnli.split_sentence(s) for s in batch]
         maxlen = max([len(s) for s in batch])
         sent_matrix = torch.LongTensor([self.prepare_sent(s,maxlen) for s in batch])
         return sent_matrix

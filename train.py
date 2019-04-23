@@ -89,7 +89,7 @@ def train():
     
     # Standard hyperparams
     weight_decay = .99
-    eval_freq    = 100
+    eval_freq    = 500
     check_freq   = 1000
 
     # Obtain GloVe word embeddings
@@ -126,12 +126,9 @@ def train():
     writer = SummaryWriter(log_dir=tensorboard_dir)
     if activate_board:
         call('gnome-terminal -- tensorboard --logdir '+tensorboard_dir, shell=True) # start tensorboard
-    train_loss = []
-    gradient_norms = []
-    train_acc = []
-    test_acc = []
-    iteration = 0
 
+
+    iteration = 0
     # Training
     optimizer = optim.SGD(net.sequential.parameters(), 
         lr=learning_rate, weight_decay=weight_decay)
@@ -139,6 +136,9 @@ def train():
     last_dev_acc = 0
     current_dev_accs = []
     epoch = 0
+    train_acc = 0
+    train_loss = 0
+    gradient_norm = 0
     while True:
         # Stopping criterion
         iteration += 1
@@ -177,10 +177,8 @@ def train():
         prediction = net.forward(prem, hyp)
         loss = loss_fn(prediction, label)
         acc = accuracy(prediction, label)
-        train_acc.append( (iteration, acc.tolist()) )
-        train_loss.append( (iteration, loss.tolist()) )
-        writer.add_scalars('accuracy', {'train': train_acc[-1][1]}, iteration)
-        writer.add_scalar('train_loss', train_loss[-1][1], iteration)
+        train_acc += acc.tolist() / eval_freq
+        train_loss += loss.tolist() / eval_freq
 
         # Backprop
         optimizer.zero_grad()
@@ -193,8 +191,7 @@ def train():
             norm = 0
             for params in net.sequential.parameters():
                 norm += params.grad.reshape(-1).pow(2).sum()
-            gradient_norms.append( (iteration, norm.reshape(-1).tolist()[0]) )
-            writer.add_scalar('gradient_norm', gradient_norms[-1][1], iteration)
+            gradient_norm += norm.reshape(-1).tolist()[0] / eval_freq
 
             # Evaluation
             if iteration % eval_freq == 0 or iteration == max_steps:
@@ -204,29 +201,25 @@ def train():
                 label = label.to(device)
                 prediction = net.forward(prem,hyp)
                 acc = accuracy(prediction, label)
-                test_acc.append( (iteration, acc.tolist()) )
-                writer.add_scalars('accuracy', {'dev': test_acc[-1][1]}, iteration)
-                print("Iteration: {}\t\tTest accuracy: {}\t\tTrain accuracy: {}".format(iteration, acc, train_acc[-1][1]))
+                test_acc = acc.tolist()
+                writer.add_scalars('accuracy', {'dev': test_acc}, iteration)
+                writer.add_scalars('accuracy', {'train': train_acc}, iteration)
+                writer.add_scalar('train_loss', train_loss, iteration)
+                writer.add_scalar('gradient_norm', gradient_norm, iteration)
+                print("Iteration: {}\t\tTest accuracy: {}\t\tTrain accuracy: {}".format(iteration, test_acc, train_acc))
+                train_acc = 0
+                train_loss = 0
+                gradient_norm = 0
             
             # Checkpoint
             if iteration % check_freq == 0 or iteration == max_steps:
                 print("Saving checkpoint")
                 torch.save(net.state_dict(), os.path.join(checkpoint_dir, "model_iter_"+str(iteration)+".pt"))
-                # Save or return raw output
-                metrics = {"train_loss": train_loss,
-                            "gradient_norms": gradient_norms,
-                            "train_acc": train_acc,
-                            "test_acc": test_acc}
-                # Save
-                pickle.dump(metrics, open(os.path.join(output_dir, "metrics.p"), "wb"))
-                visual.make_plots(output_dir, metrics)
     
     writer.close()
 
     end_time = datetime.datetime.now()
     print("Done. Start and End time:\n\t{}\n\t{}".format(start_time, end_time))
-
-    return metrics
 
 
 
