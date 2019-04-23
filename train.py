@@ -13,15 +13,15 @@ import data_utils
 from tensorboardX import SummaryWriter
 from subprocess import call
 
-from model import BaselineNet
+from model import BaselineNet, UniLstmNet
 import data_utils
 import visual
 
 
 # Default constants
 OUTPUT_DIR_DEFAULT = 'output'
-MODEL_NAME_DEFAULT = 'baseline'
-MODEL_NAMES = ['baseline']
+MODEL_NAME_DEFAULT = 'unilstm'
+MODEL_NAMES = ['baseline', 'unilstm']
 CHECKPOINT_PATH_DEFAULT = None
 DATA_TRAIN_PATH_DEFAULT = os.path.join('data','snli_1.0','snli_1.0_train.txt')
 DATA_DEV_PATH_DEFAULT = os.path.join('data','snli_1.0','snli_1.0_dev.txt')
@@ -89,7 +89,7 @@ def train():
     
     # Standard hyperparams
     weight_decay = .01
-    eval_freq    = 500
+    eval_freq    = 50
     check_freq   = 1000
 
     # Obtain GloVe word embeddings
@@ -105,6 +105,7 @@ def train():
     dataset = {}
     dataloader = {}
     for set_name,set_path in [('train',data_train_path),('dev',data_dev_path)]:
+        print("Loading {} data".format(set_name))
         dataset[set_name] = data_utils.DatasetSnli(set_path)
         dataloader[set_name] = data_utils.DataLoaderSnli(dataset[set_name], vocab)
 
@@ -114,6 +115,8 @@ def train():
     print("Device: "+device_name)
     if model_name == 'baseline':
         net = BaselineNet(glove_emb.embedding).to(device)
+    elif model_name == 'unilstm':
+        net = UniLstmNet(glove_emb.embedding).to(device)
     # Load checkpoint
     if checkpoint_path is not None:
         print("Initialising model from "+checkpoint_path)
@@ -130,7 +133,7 @@ def train():
 
     iteration = 0
     # Training
-    optimizer = optim.SGD(net.sequential.parameters(), 
+    optimizer = optim.SGD(net.trainable_params(), 
         lr=learning_rate, weight_decay=weight_decay)
     
     last_dev_acc = 0
@@ -142,6 +145,7 @@ def train():
     while True:
         # Stopping criterion
         iteration += 1
+        print("Iteration {}".format(iteration))
         # Max iterations
         if max_steps is not None:
             if iteration > max_steps:
@@ -252,7 +256,7 @@ if __name__ == '__main__':
     # Command line arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name', type = str, default = MODEL_NAME_DEFAULT,
-                        help='Name of the model type to train (baseline, )')
+                        help='Name of the model type to train (baseline, unilstm, )')
     parser.add_argument('--checkpoint_path', type = str, default = CHECKPOINT_PATH_DEFAULT,
                         help='Path to a checkpoint file')
     parser.add_argument('--output_dir', type = str, default = OUTPUT_DIR_DEFAULT,

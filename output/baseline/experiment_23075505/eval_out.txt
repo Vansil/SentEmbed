@@ -1,0 +1,24 @@
+model_name : baseline
+checkpoint_path : output/baseline/experiment_23075505/checkpoints/model_iter_102000.pt
+output_dir : evaluation
+data_path : data/snli_1.0/snli_1.0_test.txt
+embedding_path : data/glove/glove.filtered.300d.txt
+
+Loading GloVe embedding from data/glove/glove.filtered.300d.txt
+25000 words loaded (0 invalid format)
+31009 words loaded (0 invalid format)
+Device: cpu
+Initialising model from output/baseline/experiment_23075505/checkpoints/model_iter_102000.pt
+Network architecture:
+	BaselineNet(
+  (embed): Embedding(31011, 300)
+  (avg): Average()
+  (comb): Combine()
+  (sequential): Sequential(
+    (0): Linear(in_features=1200, out_features=512, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=512, out_features=3, bias=True)
+  )
+)
+Macro accuracy:	0.443768709897995
+Micro accuracy:	0.4513436509827182
