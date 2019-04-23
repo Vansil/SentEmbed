@@ -7,8 +7,6 @@ import pickle
 import data_utils
 from model import BaselineNet
 
-sys.setdefaultencoding('utf8')
-
 # Set PATHs
 PATH_TO_SENTEVAL = 'SentEval/'
 PATH_TO_DATA = 'SentEval/data/senteval_data/'
