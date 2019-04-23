@@ -202,6 +202,7 @@ def train():
                 prediction = net.forward(prem,hyp)
                 acc = accuracy(prediction, label)
                 test_acc = acc.tolist()
+                current_dev_accs.append(test_acc)
                 writer.add_scalars('accuracy', {'dev': test_acc}, iteration)
                 writer.add_scalars('accuracy', {'train': train_acc}, iteration)
                 writer.add_scalar('train_loss', train_loss, iteration)
