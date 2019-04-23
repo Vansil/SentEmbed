@@ -88,7 +88,7 @@ def train():
             return
     
     # Standard hyperparams
-    weight_decay = .99
+    weight_decay = .01
     eval_freq    = 500
     check_freq   = 1000
 
