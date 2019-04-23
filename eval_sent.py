@@ -81,13 +81,12 @@ logging.basicConfig(format='%(asctime)s : %(message)s', level=logging.DEBUG)
 if __name__ == "__main__":
 
     se = senteval.engine.SE(params_senteval, batcher, prepare)
-    transfer_tasks = ['STS12']
-    # transfer_tasks = ['STS12', 'STS13', 'STS14', 'STS15', 'STS16',
-    #                   'MR', 'CR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC', 'MRPC',
-    #                   'SICKEntailment', 'SICKRelatedness', 'STSBenchmark',
-    #                   'Length', 'WordContent', 'Depth', 'TopConstituents',
-    #                   'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
-    #                   'OddManOut', 'CoordinationInversion']
+    transfer_tasks = ['STS12', 'STS13', 'STS14', 'STS15', 'STS16',
+                      'MR', 'CR', 'MPQA', 'SUBJ', 'SST2', 'SST5', 'TREC', 'MRPC',
+                      'SICKEntailment', 'SICKRelatedness', 'STSBenchmark',
+                      'Length', 'WordContent', 'Depth', 'TopConstituents',
+                      'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
+                      'OddManOut', 'CoordinationInversion']
     results = se.eval(transfer_tasks)
     pickle.dump(results, open(os.path.join(output_dir,'SentEval_results.p'), "wb"))
     print(results)
