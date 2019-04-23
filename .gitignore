@@ -1,3 +1,13 @@
+# Data
+data/*
+!data/get_data.sh
+SentEval/data/*
+!SentEval/data/get_transfer_data.bash
+!SentEval/data/tokenizer.sed
+
+# Network checkpoints
+output/**/checkpoints/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
