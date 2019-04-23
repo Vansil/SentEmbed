@@ -1,5 +1,8 @@
+from __future__ import absolute_import, division, unicode_literals
+
 import logging
 import sys
+
 import torch
 import os
 import pickle
@@ -61,7 +64,7 @@ def batcher(params, batch):
     dataloader = params.dataloader
     
     # Encode batch through model
-    batch = [str(' '.join(sent), errors="ignore") if sent != [] else '.' for sent in batch]
+    batch = [' '.join(sent) if sent != [] else '.' for sent in batch]
     batch = dataloader.prepare_sentences(batch)
     embeddings = net.encode(batch).numpy()
 
