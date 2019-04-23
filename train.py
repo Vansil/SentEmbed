@@ -145,7 +145,6 @@ def train():
     while True:
         # Stopping criterion
         iteration += 1
-        print("Iteration {}".format(iteration))
         # Max iterations
         if max_steps is not None:
             if iteration > max_steps:
@@ -199,7 +198,7 @@ def train():
 
             # Evaluation
             if iteration % eval_freq == 0 or iteration == max_steps:
-                prem, hyp, label = dataloader['dev'].next_batch(batch_size)
+                prem, hyp, label = dataloader['dev'].next_batch(len(dataset['dev']))
                 prem = prem.to(device)
                 hyp  = hyp.to(device)
                 label = label.to(device)
