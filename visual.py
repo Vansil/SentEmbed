@@ -83,3 +83,6 @@ def make_plots(output_dir, metrics):
         ax.legend()
         ax.grid()
         fig.savefig(os.path.join(output_dir, "accuracy_avg.png"))
+
+        plt.close(fig)
+        

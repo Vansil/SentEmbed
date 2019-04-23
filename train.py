@@ -26,8 +26,8 @@ DATA_TRAIN_PATH_DEFAULT = os.path.join('data','snli_1.0','snli_1.0_train.txt')
 DATA_DEV_PATH_DEFAULT = os.path.join('data','snli_1.0','snli_1.0_dev.txt')
 EMBEDDING_PATH_DEFAULT = os.path.join('data','glove','glove.filtered.300d.txt')
 BATCH_SIZE_DEFAULT = 64
-MAX_STEPS_DEFAULT = 1500
-LEARNING_RATE_DEFAULT = 2e-3
+MAX_STEPS_DEFAULT = None
+LEARNING_RATE_DEFAULT = 0.1
 ACTIVATE_BOOL_DEFAULT = False
 
 FLAGS = None
@@ -131,9 +131,38 @@ def train():
 
     # Training
     optimizer = optim.SGD(net.sequential.parameters(), 
-        lr=learning_rate)#, weight_decay=weight_decay)
-    while iteration < max_steps:
+        lr=learning_rate, weight_decay=weight_decay)
+    
+    last_dev_acc = 0
+    current_dev_accs = []
+    epoch = 0
+    while True:
+        # Stopping criterion
         iteration += 1
+        # Max iterations
+        if max_steps is not None:
+            if iteration > max_steps:
+                print("Training stopped: maximum number of iterations reached")
+                break
+        # Adapt learning rate; early stopping
+        if dataloader['train']._epochs_completed > epoch:
+            epoch = dataloader['train']._epochs_completed
+            print("Epoch {}".format(epoch))
+            if current_dev_accs == []:
+                current_dev_accs = [0]
+            current_dev_acc = np.mean(current_dev_accs)
+            if current_dev_acc < last_dev_acc:
+                learning_rate /= 5
+                if learning_rate < 1e-5:
+                    print("Training stopped: learning rate dropped below 1e-5")
+                    break
+                for g in optimizer.param_groups:
+                    g['lr'] = learning_rate
+                print("Learning rate dropped to {}".format(learning_rate))
+                writer.add_scalar('learning_rate', learning_rate, iteration)
+            writer.add_scalar('epoch_dev_acc', current_dev_acc, epoch)
+            last_dev_acc = current_dev_acc
+            current_dev_accs = []
 
         # Sample a mini-batch
         prem, hyp, label = dataloader['train'].next_batch(batch_size)
@@ -174,7 +203,7 @@ def train():
                 acc = accuracy(prediction, label)
                 test_acc.append( (iteration, acc.tolist()) )
                 writer.add_scalars('accuracy', {'dev': test_acc[-1][1]}, iteration)
-                print("Iteration: {}\t\tTest accuracy: {}\t\tTrain accuracy: {}".format(iteration, acc, train_acc[-1]))
+                print("Iteration: {}\t\tTest accuracy: {}\t\tTrain accuracy: {}".format(iteration, acc, train_acc[-1][1]))
             
             # Checkpoint
             if iteration % check_freq == 0 or iteration == max_steps:
