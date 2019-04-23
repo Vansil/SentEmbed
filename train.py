@@ -17,6 +17,7 @@ from model import BaselineNet
 import data_utils
 import visual
 
+
 # Default constants
 OUTPUT_DIR_DEFAULT = 'output'
 MODEL_NAME_DEFAULT = 'baseline'

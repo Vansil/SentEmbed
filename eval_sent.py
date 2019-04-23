@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
     # Empty dataloader for converting sentence list to batch
     dataloader = data_utils.DataLoaderSnli([], vocab)
-
+    
     # Load network
     if model_name == 'baseline':
         net = BaselineNet(glove_emb.embedding).to(device)
