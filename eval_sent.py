@@ -88,6 +88,12 @@ if __name__ == "__main__":
                       'Length', 'WordContent', 'Depth', 'TopConstituents',
                       'BigramShift', 'Tense', 'SubjNumber', 'ObjNumber',
                       'OddManOut', 'CoordinationInversion']
-    results = se.eval(transfer_tasks)
+    results = []
+    for task in transfer_tasks:
+        try:
+            r = se.eval(transfer_tasks)
+            results.append(r)
+        except Exception as e:
+            print("Failed to perform task '{}':\n".format(task,str(e)))
     pickle.dump(results, open(os.path.join(output_dir,'SentEval_results.p'), "wb"))
     print(results)
