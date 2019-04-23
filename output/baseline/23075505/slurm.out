@@ -1,0 +1,355 @@
+model_name : baseline
+checkpoint_path : None
+output_dir : output
+data_train_path : data/snli_1.0/snli_1.0_train.txt
+data_dev_path : data/snli_1.0/snli_1.0_dev.txt
+embedding_path : data/glove/glove.filtered.300d.txt
+batch_size : 64
+max_steps : None
+learning_rate : 0.1
+activate_board : False
+Loading GloVe embedding from data/glove/glove.filtered.300d.txt
+25000 words loaded (0 invalid format)
+31009 words loaded (0 invalid format)
+Device: cuda
+Network architecture:
+	BaselineNet(
+  (embed): Embedding(31011, 300)
+  (avg): Average()
+  (comb): Combine()
+  (sequential): Sequential(
+    (0): Linear(in_features=1200, out_features=512, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=512, out_features=3, bias=True)
+  )
+)
+Loss module:
+	<function cross_entropy at 0x2b8d333def28>
+Iteration: 500		Test accuracy: 0.4375		Train accuracy: 0.39471874999999945
+Iteration: 1000		Test accuracy: 0.390625		Train accuracy: 0.43503124999999926
+Saving checkpoint
+Iteration: 1500		Test accuracy: 0.46875		Train accuracy: 0.45474999999999954
+Iteration: 2000		Test accuracy: 0.515625		Train accuracy: 0.48049999999999976
+Saving checkpoint
+Iteration: 2500		Test accuracy: 0.40625		Train accuracy: 0.4989687499999998
+Iteration: 3000		Test accuracy: 0.4375		Train accuracy: 0.5153749999999999
+Saving checkpoint
+Iteration: 3500		Test accuracy: 0.5		Train accuracy: 0.5115937500000004
+Iteration: 4000		Test accuracy: 0.515625		Train accuracy: 0.52125
+Saving checkpoint
+Iteration: 4500		Test accuracy: 0.453125		Train accuracy: 0.5246250000000001
+Iteration: 5000		Test accuracy: 0.5625		Train accuracy: 0.5232812499999996
+Saving checkpoint
+Iteration: 5500		Test accuracy: 0.453125		Train accuracy: 0.5257812500000001
+Iteration: 6000		Test accuracy: 0.515625		Train accuracy: 0.5308750000000004
+Saving checkpoint
+Iteration: 6500		Test accuracy: 0.484375		Train accuracy: 0.5306562500000002
+Iteration: 7000		Test accuracy: 0.484375		Train accuracy: 0.533875
+Saving checkpoint
+Iteration: 7500		Test accuracy: 0.59375		Train accuracy: 0.5280937499999999
+Iteration: 8000		Test accuracy: 0.546875		Train accuracy: 0.5314375000000006
+Saving checkpoint
+Iteration: 8500		Test accuracy: 0.375		Train accuracy: 0.5329062499999999
+Epoch 1
+Iteration: 9000		Test accuracy: 0.5625		Train accuracy: 0.5306250000000003
+Saving checkpoint
+Iteration: 9500		Test accuracy: 0.5		Train accuracy: 0.5272812499999999
+Iteration: 10000		Test accuracy: 0.65625		Train accuracy: 0.5274374999999999
+Saving checkpoint
+Iteration: 10500		Test accuracy: 0.421875		Train accuracy: 0.5338750000000005
+Iteration: 11000		Test accuracy: 0.625		Train accuracy: 0.5323749999999999
+Saving checkpoint
+Iteration: 11500		Test accuracy: 0.625		Train accuracy: 0.5293749999999999
+Iteration: 12000		Test accuracy: 0.53125		Train accuracy: 0.5258750000000001
+Saving checkpoint
+Iteration: 12500		Test accuracy: 0.546875		Train accuracy: 0.5320937500000003
+Iteration: 13000		Test accuracy: 0.515625		Train accuracy: 0.5306874999999996
+Saving checkpoint
+Iteration: 13500		Test accuracy: 0.328125		Train accuracy: 0.5309062499999998
+Iteration: 14000		Test accuracy: 0.46875		Train accuracy: 0.5294062500000005
+Saving checkpoint
+Iteration: 14500		Test accuracy: 0.484375		Train accuracy: 0.5320937499999998
+Iteration: 15000		Test accuracy: 0.6875		Train accuracy: 0.5285624999999994
+Saving checkpoint
+Iteration: 15500		Test accuracy: 0.4375		Train accuracy: 0.5367812500000007
+Iteration: 16000		Test accuracy: 0.515625		Train accuracy: 0.5290312499999996
+Saving checkpoint
+Iteration: 16500		Test accuracy: 0.5		Train accuracy: 0.53153125
+Iteration: 17000		Test accuracy: 0.4375		Train accuracy: 0.5310624999999995
+Saving checkpoint
+Epoch 2
+Iteration: 17500		Test accuracy: 0.5625		Train accuracy: 0.5355937500000003
+Iteration: 18000		Test accuracy: 0.515625		Train accuracy: 0.5373125000000003
+Saving checkpoint
+Iteration: 18500		Test accuracy: 0.546875		Train accuracy: 0.5309375000000001
+Iteration: 19000		Test accuracy: 0.328125		Train accuracy: 0.5321250000000003
+Saving checkpoint
+Iteration: 19500		Test accuracy: 0.4375		Train accuracy: 0.5283437499999999
+Iteration: 20000		Test accuracy: 0.546875		Train accuracy: 0.5381874999999996
+Saving checkpoint
+Iteration: 20500		Test accuracy: 0.46875		Train accuracy: 0.5292812499999998
+Iteration: 21000		Test accuracy: 0.5		Train accuracy: 0.5271562499999995
+Saving checkpoint
+Iteration: 21500		Test accuracy: 0.4375		Train accuracy: 0.5322187499999996
+Iteration: 22000		Test accuracy: 0.4375		Train accuracy: 0.5301562499999998
+Saving checkpoint
+Iteration: 22500		Test accuracy: 0.390625		Train accuracy: 0.5359375
+Iteration: 23000		Test accuracy: 0.640625		Train accuracy: 0.5284687499999999
+Saving checkpoint
+Iteration: 23500		Test accuracy: 0.46875		Train accuracy: 0.5308750000000004
+Iteration: 24000		Test accuracy: 0.328125		Train accuracy: 0.53175
+Saving checkpoint
+Iteration: 24500		Test accuracy: 0.53125		Train accuracy: 0.5336875
+Iteration: 25000		Test accuracy: 0.640625		Train accuracy: 0.5314375000000003
+Saving checkpoint
+Iteration: 25500		Test accuracy: 0.4375		Train accuracy: 0.5302812499999998
+Epoch 3
+Learning rate dropped to 0.02
+Iteration: 26000		Test accuracy: 0.515625		Train accuracy: 0.5431250000000002
+Saving checkpoint
+Iteration: 26500		Test accuracy: 0.53125		Train accuracy: 0.547875
+Iteration: 27000		Test accuracy: 0.4375		Train accuracy: 0.5460625000000008
+Saving checkpoint
+Iteration: 27500		Test accuracy: 0.578125		Train accuracy: 0.5566562500000002
+Iteration: 28000		Test accuracy: 0.59375		Train accuracy: 0.5497500000000001
+Saving checkpoint
+Iteration: 28500		Test accuracy: 0.609375		Train accuracy: 0.5560937500000003
+Iteration: 29000		Test accuracy: 0.640625		Train accuracy: 0.5489062500000007
+Saving checkpoint
+Iteration: 29500		Test accuracy: 0.53125		Train accuracy: 0.5564062500000009
+Iteration: 30000		Test accuracy: 0.578125		Train accuracy: 0.5539374999999997
+Saving checkpoint
+Iteration: 30500		Test accuracy: 0.4375		Train accuracy: 0.5508750000000006
+Iteration: 31000		Test accuracy: 0.609375		Train accuracy: 0.5521562500000009
+Saving checkpoint
+Iteration: 31500		Test accuracy: 0.515625		Train accuracy: 0.55290625
+Iteration: 32000		Test accuracy: 0.5625		Train accuracy: 0.5528437500000003
+Saving checkpoint
+Iteration: 32500		Test accuracy: 0.59375		Train accuracy: 0.5581562499999999
+Iteration: 33000		Test accuracy: 0.65625		Train accuracy: 0.5495000000000001
+Saving checkpoint
+Iteration: 33500		Test accuracy: 0.53125		Train accuracy: 0.5563749999999995
+Iteration: 34000		Test accuracy: 0.546875		Train accuracy: 0.5479687500000006
+Saving checkpoint
+Epoch 4
+Iteration: 34500		Test accuracy: 0.5		Train accuracy: 0.5531562500000003
+Iteration: 35000		Test accuracy: 0.46875		Train accuracy: 0.5497499999999998
+Saving checkpoint
+Iteration: 35500		Test accuracy: 0.625		Train accuracy: 0.5545625000000004
+Iteration: 36000		Test accuracy: 0.765625		Train accuracy: 0.5539687500000003
+Saving checkpoint
+Iteration: 36500		Test accuracy: 0.5		Train accuracy: 0.5518125000000005
+Iteration: 37000		Test accuracy: 0.578125		Train accuracy: 0.5558437500000004
+Saving checkpoint
+Iteration: 37500		Test accuracy: 0.578125		Train accuracy: 0.5550937500000006
+Iteration: 38000		Test accuracy: 0.59375		Train accuracy: 0.5512187500000002
+Saving checkpoint
+Iteration: 38500		Test accuracy: 0.578125		Train accuracy: 0.5552187499999998
+Iteration: 39000		Test accuracy: 0.546875		Train accuracy: 0.5538125000000002
+Saving checkpoint
+Iteration: 39500		Test accuracy: 0.625		Train accuracy: 0.5566874999999998
+Iteration: 40000		Test accuracy: 0.625		Train accuracy: 0.5531874999999998
+Saving checkpoint
+Iteration: 40500		Test accuracy: 0.59375		Train accuracy: 0.5556562500000011
+Iteration: 41000		Test accuracy: 0.5		Train accuracy: 0.5557500000000002
+Saving checkpoint
+Iteration: 41500		Test accuracy: 0.53125		Train accuracy: 0.5495312500000001
+Iteration: 42000		Test accuracy: 0.484375		Train accuracy: 0.5557812500000006
+Saving checkpoint
+Iteration: 42500		Test accuracy: 0.53125		Train accuracy: 0.5525937500000002
+Epoch 5
+Iteration: 43000		Test accuracy: 0.578125		Train accuracy: 0.5517187500000008
+Saving checkpoint
+Iteration: 43500		Test accuracy: 0.5625		Train accuracy: 0.54871875
+Iteration: 44000		Test accuracy: 0.6875		Train accuracy: 0.5573125
+Saving checkpoint
+Iteration: 44500		Test accuracy: 0.625		Train accuracy: 0.5531874999999999
+Iteration: 45000		Test accuracy: 0.578125		Train accuracy: 0.5513125
+Saving checkpoint
+Iteration: 45500		Test accuracy: 0.53125		Train accuracy: 0.5536562499999995
+Iteration: 46000		Test accuracy: 0.484375		Train accuracy: 0.5572812499999995
+Saving checkpoint
+Iteration: 46500		Test accuracy: 0.625		Train accuracy: 0.5546874999999993
+Iteration: 47000		Test accuracy: 0.6875		Train accuracy: 0.5571562500000004
+Saving checkpoint
+Iteration: 47500		Test accuracy: 0.578125		Train accuracy: 0.5575312499999997
+Iteration: 48000		Test accuracy: 0.46875		Train accuracy: 0.5559062500000003
+Saving checkpoint
+Iteration: 48500		Test accuracy: 0.484375		Train accuracy: 0.5576875000000007
+Iteration: 49000		Test accuracy: 0.453125		Train accuracy: 0.5566875000000004
+Saving checkpoint
+Iteration: 49500		Test accuracy: 0.625		Train accuracy: 0.5495000000000004
+Iteration: 50000		Test accuracy: 0.671875		Train accuracy: 0.5505624999999998
+Saving checkpoint
+Iteration: 50500		Test accuracy: 0.5625		Train accuracy: 0.5471250000000009
+Iteration: 51000		Test accuracy: 0.609375		Train accuracy: 0.5536562500000006
+Saving checkpoint
+Epoch 6
+Iteration: 51500		Test accuracy: 0.59375		Train accuracy: 0.5555625000000002
+Iteration: 52000		Test accuracy: 0.546875		Train accuracy: 0.553968750000001
+Saving checkpoint
+Iteration: 52500		Test accuracy: 0.59375		Train accuracy: 0.5529999999999999
+Iteration: 53000		Test accuracy: 0.625		Train accuracy: 0.5543125000000007
+Saving checkpoint
+Iteration: 53500		Test accuracy: 0.546875		Train accuracy: 0.5545937500000004
+Iteration: 54000		Test accuracy: 0.703125		Train accuracy: 0.55240625
+Saving checkpoint
+Iteration: 54500		Test accuracy: 0.5		Train accuracy: 0.5504062499999999
+Iteration: 55000		Test accuracy: 0.6875		Train accuracy: 0.5510000000000004
+Saving checkpoint
+Iteration: 55500		Test accuracy: 0.546875		Train accuracy: 0.5564375000000001
+Iteration: 56000		Test accuracy: 0.484375		Train accuracy: 0.5594374999999998
+Saving checkpoint
+Iteration: 56500		Test accuracy: 0.59375		Train accuracy: 0.5579999999999996
+Iteration: 57000		Test accuracy: 0.546875		Train accuracy: 0.5570000000000005
+Saving checkpoint
+Iteration: 57500		Test accuracy: 0.5		Train accuracy: 0.5476249999999999
+Iteration: 58000		Test accuracy: 0.609375		Train accuracy: 0.5550312500000006
+Saving checkpoint
+Iteration: 58500		Test accuracy: 0.546875		Train accuracy: 0.5515625000000004
+Iteration: 59000		Test accuracy: 0.609375		Train accuracy: 0.5540937499999999
+Saving checkpoint
+Iteration: 59500		Test accuracy: 0.609375		Train accuracy: 0.55490625
+Iteration: 60000		Test accuracy: 0.53125		Train accuracy: 0.55296875
+Saving checkpoint
+Epoch 7
+Learning rate dropped to 0.004
+Iteration: 60500		Test accuracy: 0.5625		Train accuracy: 0.5572187500000007
+Iteration: 61000		Test accuracy: 0.484375		Train accuracy: 0.5578437500000001
+Saving checkpoint
+Iteration: 61500		Test accuracy: 0.515625		Train accuracy: 0.5574687500000001
+Iteration: 62000		Test accuracy: 0.640625		Train accuracy: 0.5558750000000002
+Saving checkpoint
+Iteration: 62500		Test accuracy: 0.453125		Train accuracy: 0.5589062499999998
+Iteration: 63000		Test accuracy: 0.65625		Train accuracy: 0.5602187499999999
+Saving checkpoint
+Iteration: 63500		Test accuracy: 0.546875		Train accuracy: 0.5537187500000004
+Iteration: 64000		Test accuracy: 0.609375		Train accuracy: 0.5564375000000001
+Saving checkpoint
+Iteration: 64500		Test accuracy: 0.640625		Train accuracy: 0.5580625000000009
+Iteration: 65000		Test accuracy: 0.53125		Train accuracy: 0.5575000000000006
+Saving checkpoint
+Iteration: 65500		Test accuracy: 0.625		Train accuracy: 0.5576875000000007
+Iteration: 66000		Test accuracy: 0.671875		Train accuracy: 0.5638437500000006
+Saving checkpoint
+Iteration: 66500		Test accuracy: 0.40625		Train accuracy: 0.5561562500000005
+Iteration: 67000		Test accuracy: 0.5625		Train accuracy: 0.5587812500000001
+Saving checkpoint
+Iteration: 67500		Test accuracy: 0.609375		Train accuracy: 0.5604062500000003
+Iteration: 68000		Test accuracy: 0.53125		Train accuracy: 0.5563437500000004
+Saving checkpoint
+Iteration: 68500		Test accuracy: 0.609375		Train accuracy: 0.5590624999999999
+Epoch 8
+Learning rate dropped to 0.0008
+Iteration: 69000		Test accuracy: 0.53125		Train accuracy: 0.5576875000000007
+Saving checkpoint
+Iteration: 69500		Test accuracy: 0.5		Train accuracy: 0.5615624999999999
+Iteration: 70000		Test accuracy: 0.578125		Train accuracy: 0.55465625
+Saving checkpoint
+Iteration: 70500		Test accuracy: 0.640625		Train accuracy: 0.5627500000000003
+Iteration: 71000		Test accuracy: 0.578125		Train accuracy: 0.5572812499999994
+Saving checkpoint
+Iteration: 71500		Test accuracy: 0.5625		Train accuracy: 0.5608750000000005
+Iteration: 72000		Test accuracy: 0.484375		Train accuracy: 0.5581250000000005
+Saving checkpoint
+Iteration: 72500		Test accuracy: 0.53125		Train accuracy: 0.558625
+Iteration: 73000		Test accuracy: 0.6875		Train accuracy: 0.5577812500000009
+Saving checkpoint
+Iteration: 73500		Test accuracy: 0.59375		Train accuracy: 0.5608437500000002
+Iteration: 74000		Test accuracy: 0.46875		Train accuracy: 0.5608124999999999
+Saving checkpoint
+Iteration: 74500		Test accuracy: 0.46875		Train accuracy: 0.5632500000000004
+Iteration: 75000		Test accuracy: 0.5625		Train accuracy: 0.5593437500000008
+Saving checkpoint
+Iteration: 75500		Test accuracy: 0.578125		Train accuracy: 0.5588124999999998
+Iteration: 76000		Test accuracy: 0.671875		Train accuracy: 0.5581562500000004
+Saving checkpoint
+Iteration: 76500		Test accuracy: 0.46875		Train accuracy: 0.558031250000001
+Iteration: 77000		Test accuracy: 0.515625		Train accuracy: 0.5540312500000004
+Saving checkpoint
+Epoch 9
+Learning rate dropped to 0.00016
+Iteration: 77500		Test accuracy: 0.546875		Train accuracy: 0.5590312500000001
+Iteration: 78000		Test accuracy: 0.5		Train accuracy: 0.5563750000000003
+Saving checkpoint
+Iteration: 78500		Test accuracy: 0.5625		Train accuracy: 0.5598437500000001
+Iteration: 79000		Test accuracy: 0.578125		Train accuracy: 0.5576250000000006
+Saving checkpoint
+Iteration: 79500		Test accuracy: 0.59375		Train accuracy: 0.5588125000000002
+Iteration: 80000		Test accuracy: 0.59375		Train accuracy: 0.5605937500000001
+Saving checkpoint
+Iteration: 80500		Test accuracy: 0.515625		Train accuracy: 0.5620625000000002
+Iteration: 81000		Test accuracy: 0.390625		Train accuracy: 0.5559375000000004
+Saving checkpoint
+Iteration: 81500		Test accuracy: 0.421875		Train accuracy: 0.5591250000000002
+Iteration: 82000		Test accuracy: 0.65625		Train accuracy: 0.5559375000000002
+Saving checkpoint
+Iteration: 82500		Test accuracy: 0.75		Train accuracy: 0.5559687500000001
+Iteration: 83000		Test accuracy: 0.609375		Train accuracy: 0.5550312500000005
+Saving checkpoint
+Iteration: 83500		Test accuracy: 0.6875		Train accuracy: 0.5573437500000007
+Iteration: 84000		Test accuracy: 0.609375		Train accuracy: 0.5594687500000005
+Saving checkpoint
+Iteration: 84500		Test accuracy: 0.640625		Train accuracy: 0.5622812500000003
+Iteration: 85000		Test accuracy: 0.5625		Train accuracy: 0.5531875000000004
+Saving checkpoint
+Iteration: 85500		Test accuracy: 0.5625		Train accuracy: 0.5611562499999996
+Epoch 10
+Iteration: 86000		Test accuracy: 0.53125		Train accuracy: 0.5641875000000002
+Saving checkpoint
+Iteration: 86500		Test accuracy: 0.53125		Train accuracy: 0.5591562499999997
+Iteration: 87000		Test accuracy: 0.5		Train accuracy: 0.5587500000000007
+Saving checkpoint
+Iteration: 87500		Test accuracy: 0.515625		Train accuracy: 0.5609062500000003
+Iteration: 88000		Test accuracy: 0.515625		Train accuracy: 0.5625312500000007
+Saving checkpoint
+Iteration: 88500		Test accuracy: 0.703125		Train accuracy: 0.5645625000000003
+Iteration: 89000		Test accuracy: 0.578125		Train accuracy: 0.5617187500000006
+Saving checkpoint
+Iteration: 89500		Test accuracy: 0.6875		Train accuracy: 0.5552812500000004
+Iteration: 90000		Test accuracy: 0.609375		Train accuracy: 0.5603437500000005
+Saving checkpoint
+Iteration: 90500		Test accuracy: 0.53125		Train accuracy: 0.5627187500000004
+Iteration: 91000		Test accuracy: 0.5		Train accuracy: 0.5546562500000007
+Saving checkpoint
+Iteration: 91500		Test accuracy: 0.6875		Train accuracy: 0.5595312499999999
+Iteration: 92000		Test accuracy: 0.53125		Train accuracy: 0.5614375000000004
+Saving checkpoint
+Iteration: 92500		Test accuracy: 0.546875		Train accuracy: 0.5595312500000001
+Iteration: 93000		Test accuracy: 0.65625		Train accuracy: 0.5579375000000003
+Saving checkpoint
+Iteration: 93500		Test accuracy: 0.5		Train accuracy: 0.5554062499999995
+Iteration: 94000		Test accuracy: 0.515625		Train accuracy: 0.5528749999999999
+Saving checkpoint
+Epoch 11
+Learning rate dropped to 3.2000000000000005e-05
+Iteration: 94500		Test accuracy: 0.453125		Train accuracy: 0.5589374999999998
+Iteration: 95000		Test accuracy: 0.5		Train accuracy: 0.5576875000000001
+Saving checkpoint
+Iteration: 95500		Test accuracy: 0.53125		Train accuracy: 0.5546250000000001
+Iteration: 96000		Test accuracy: 0.515625		Train accuracy: 0.56
+Saving checkpoint
+Iteration: 96500		Test accuracy: 0.625		Train accuracy: 0.5600000000000008
+Iteration: 97000		Test accuracy: 0.625		Train accuracy: 0.5582500000000001
+Saving checkpoint
+Iteration: 97500		Test accuracy: 0.640625		Train accuracy: 0.5566562500000003
+Iteration: 98000		Test accuracy: 0.546875		Train accuracy: 0.5598125000000007
+Saving checkpoint
+Iteration: 98500		Test accuracy: 0.546875		Train accuracy: 0.5583750000000004
+Iteration: 99000		Test accuracy: 0.5625		Train accuracy: 0.5549375000000003
+Saving checkpoint
+Iteration: 99500		Test accuracy: 0.53125		Train accuracy: 0.5638750000000003
+Iteration: 100000		Test accuracy: 0.515625		Train accuracy: 0.5573750000000004
+Saving checkpoint
+Iteration: 100500		Test accuracy: 0.625		Train accuracy: 0.5583749999999995
+Iteration: 101000		Test accuracy: 0.5625		Train accuracy: 0.5592812500000005
+Saving checkpoint
+Iteration: 101500		Test accuracy: 0.546875		Train accuracy: 0.5574375000000007
+Iteration: 102000		Test accuracy: 0.515625		Train accuracy: 0.5615937500000001
+Saving checkpoint
+Iteration: 102500		Test accuracy: 0.5		Train accuracy: 0.5601250000000004
+Epoch 12
+Training stopped: learning rate dropped below 1e-5
+Done. Start and End time:
+	2019-04-23 07:55:05.206500
+	2019-04-23 08:04:43.466824
