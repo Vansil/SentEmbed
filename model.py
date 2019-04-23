@@ -64,8 +64,10 @@ class UniLstmNet(nn.Module):
         # LSTM
         hidden_dim = 300
         batch_size = sentence.shape[0]
-        hidden_0 = torch.zeros(1, batch_size, hidden_dim)
-        state_0  = torch.zeros(1, batch_size, hidden_dim)
+        device_name = 'cuda' if torch.cuda.is_available() else 'cpu'
+        device = torch.device(device_name)
+        hidden_0 = torch.zeros(1, batch_size, hidden_dim).to(device)
+        state_0  = torch.zeros(1, batch_size, hidden_dim).to(device)
         _, (hidden, _) = self.lstm(embed, (hidden_0, state_0))
 
         return hidden.squeeze()
