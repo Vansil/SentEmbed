@@ -21,6 +21,7 @@ checkpoint_path = os.path.join('output','baseline','23065025','checkpoints','mod
 output_dir = os.path.join('output','baseline','22221624_test')
 
 device_name = 'cuda' if torch.cuda.is_available() else 'cpu'
+device_name = 'cpu'
 device = torch.device(device_name)
 print("Device: "+device_name)
 
@@ -94,6 +95,6 @@ if __name__ == "__main__":
             r = se.eval(transfer_tasks)
             results.append(r)
         except Exception as e:
-            print("Failed to perform task '{}':\n".format(task,str(e)))
+            print("Failed to perform task '{}':\n{}".format(task,str(e)))
     pickle.dump(results, open(os.path.join(output_dir,'SentEval_results.p'), "wb"))
     print(results)
