@@ -55,6 +55,8 @@ def train():
     '''
     Performs training and evaluation of the model.
     '''
+    start_time = datetime.datetime.now()
+
     ## Read terminal arguments
     model_name      = FLAGS.model_name
     activate_board  = FLAGS.activate_board
@@ -219,6 +221,10 @@ def train():
                 visual.make_plots(output_dir, metrics)
     
     writer.close()
+
+    end_time = datetime.datetime.now()
+    print("Done. Start and End time:\n\t{}\n\t{}".format(start_time, end_time))
+
     return metrics
 
 
